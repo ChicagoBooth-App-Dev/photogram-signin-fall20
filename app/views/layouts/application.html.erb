@@ -11,10 +11,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <li>
+          <a href = '/users'>Users</a>
+        </li>
+        <li>
+          <a href = '/photos'>Photos</a>
+        </li>
+        <li>
+          <a href = '/user_sign_up'>Sign Up</a>
+        </li>
+        <li>
+          <a href = '/user_sign_out'>Sign Out</a>
+        </li>
+
+        <li>
+          <a><%= session.fetch(:user_id) %></a>
+        </li>
+
+      </ul>
+      <hr>
+    </nav>
+
+    <%# Alerts and Notices %>
+    <% if alert.present? %>
+      <div class="alert alert-danger" role="alert"><%= alert %></div>
+    <% end %>
+    <% if notice.present? %>
+      <div class="alert alert-success" role="alert"><%= notice %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
